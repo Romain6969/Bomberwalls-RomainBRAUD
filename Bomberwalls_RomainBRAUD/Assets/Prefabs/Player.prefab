@@ -182,9 +182,11 @@ GameObject:
   - component: {fileID: 2787607690076146557}
   - component: {fileID: 5659298901197713401}
   - component: {fileID: 1394225698780232516}
+  - component: {fileID: 1776975218544613705}
+  - component: {fileID: 1076135773427437612}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,7 +366,19 @@ MonoBehaviour:
     m_ActionId: 436beb47-a4f3-498a-bb80-2134748c5a87
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1776975218544613705}
+        m_TargetAssemblyTypeName: PlaceBomb, Assembly-CSharp
+        m_MethodName: OnPlace
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ae71a6a7-aa5b-4648-a531-5e9cb455e340
     m_ActionName: Player/Place[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
@@ -382,6 +396,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea1cb117b84a56b42a936b5ab0ee93c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerRB2: {fileID: 1645151987767997085}
+  _speed: 3
+--- !u!114 &1776975218544613705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4372136963972521643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10054c0f3ca76ba4db8e205e3c249fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1076135773427437612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4372136963972521643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0932f0aee996b7845835abe4278d8c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7210422514430409042
