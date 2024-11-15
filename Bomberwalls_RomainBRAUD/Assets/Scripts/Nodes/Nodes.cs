@@ -38,6 +38,7 @@ public class Nodes : MonoBehaviour
         _hit.collider.GetComponent<AStarManager>();
     }
 
+    /*
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Item")
@@ -53,4 +54,5 @@ public class Nodes : MonoBehaviour
             PlayerItems.Instance.Items.Remove(GetComponent<Nodes>());
         }
     }
+    */
 }

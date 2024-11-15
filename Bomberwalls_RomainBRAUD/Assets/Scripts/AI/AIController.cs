@@ -25,46 +25,6 @@ public class AIController : MonoBehaviour
         CreatePath();
     }
 
-    public Nodes WichTarget()
-    {
-        //Nodes[] nodes = FindObjectsOfType<Nodes>();
-        if (PlayerItems.Instance.AIGotABomb == true)
-        {
-            if (gameObject.transform.position == BreakableWall.transform.position)
-            {
-                BombSpawn.Instance.AISpawnBomb(gameObject.transform);
-            }
-
-            return _wichDirection = BreakableWall;
-        }
-        
-        if (PlayerItems.Instance.AIGotABomb == false)
-        {
-            /*
-            if (PlayerItems.Instance.Items.Count > 0)
-            {
-                return _wichDirection = PlayerItems.Instance.Items[0];
-            }
-            */
-
-            //Cette méthode ne marche pas alors que ca ne devrai pas faire une boucle infinie
-            
-            if (StopInfinite == false)
-            {
-                for (int i = 0; i < _nodes.Count; i++)
-                {
-                    if (_nodes[i] == PlayerItems.Instance.Items[0])
-                    {
-                        StopInfinite = true;
-                        return _nodes[i];
-                    }
-                }
-            }
-            
-        }
-        return _wichDirection;
-    }
-
     public void CreatePath()
     {
         if (path.Count > 0)
@@ -78,13 +38,29 @@ public class AIController : MonoBehaviour
                 path.RemoveAt(x);
             }
         }
-        else
+
+        else if (PlayerItems.Instance.AIGotABomb == true)
         {
-            //Nodes[] nodes = FindObjectsOfType<Nodes>();
+            path = AStarManager.Instance.GeneratePath(CurrentNode, BreakableWall);
+            if (transform.position == path[0].transform.position)
+            {
+                BombSpawn.Instance.AISpawnBomb(gameObject.transform);
+            }
+        }
+        else if (FindAnyObjectByType<ObtainBomb>() != null)
+        {
+            ObtainBomb[] obtainBomb = FindObjectsOfType<ObtainBomb>();
             while (path == null || path.Count == 0)
             {
-                path = AStarManager.Instance.GeneratePath(CurrentNode, WichTarget());
-                // pour random où il doit aller il faut mettre nodes[Random.Range(0, nodes.Length)], si le Wichtarget ne marche pas.
+                path = AStarManager.Instance.GeneratePath(CurrentNode, obtainBomb[Random.Range(0, obtainBomb.Length)].Node);
+            }
+        }
+        else
+        {
+            Nodes[] nodes = FindObjectsOfType<Nodes>();
+            while (path == null || path.Count == 0)
+            {
+                path = AStarManager.Instance.GeneratePath(CurrentNode, nodes[Random.Range(0, nodes.Length)]);
             }
         }
     }

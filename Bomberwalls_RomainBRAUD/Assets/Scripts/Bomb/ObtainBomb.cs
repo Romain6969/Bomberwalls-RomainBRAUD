@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObtainBomb : MonoBehaviour
 {
+    public Nodes Node;
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -21,6 +22,10 @@ public class ObtainBomb : MonoBehaviour
                 PlayerItems.Instance.AIGotABomb = true;
                 gameObject.SetActive(false);
             }
+        }
+        if (collision.tag == "Nodes")
+        {
+            Node = collision.GetComponent<Nodes>();
         }
     }
 }

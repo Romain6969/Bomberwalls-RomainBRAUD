@@ -18,6 +18,16 @@ public class ItemBombSpawn : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject item = PoolObjectItems.instance.GetPooledObject();
+            item.transform.position = nodes[Random.Range(0, nodes.Count)].transform.position;
+            item.SetActive(true);
+        }
+    }
+
     public void SpawnItem()
     {
         GameObject item = PoolObjectItems.instance.GetPooledObject();

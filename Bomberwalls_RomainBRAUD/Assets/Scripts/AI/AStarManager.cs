@@ -13,8 +13,6 @@ public class AStarManager : MonoBehaviour
 
     public List<Nodes> GeneratePath(Nodes start, Nodes end)
     {
-        // ca montre qu'il recoit bien un node mais juste après ne le retrouve plus alors que si il à un node il devrait y aller tout de suite. Je comprends pas
-        Debug.Log(end);
         List<Nodes> ActiveList = new List<Nodes>();
 
         foreach(Nodes n in FindObjectsOfType<Nodes>())
@@ -60,6 +58,7 @@ public class AStarManager : MonoBehaviour
 
             foreach (Nodes connectNode in currentNode.Links)
             {
+
                 float heldGScore = currentNode.GScore + Vector2.Distance(currentNode.transform.position, connectNode.transform.position);
 
                 if (heldGScore < connectNode.GScore)
@@ -75,7 +74,6 @@ public class AStarManager : MonoBehaviour
                 }
             }
         }
-
         return null;
     }
 }
