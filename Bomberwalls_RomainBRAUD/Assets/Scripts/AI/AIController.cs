@@ -1,15 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
-    //The node at wich the AI start
+    //La node où l'IA commence
     public Nodes CurrentNode;
     public List<Nodes> path = new List<Nodes>();
     private List<Nodes> _nodes = new List<Nodes>();
-    private bool StopInfinite = false;
-    private Nodes _wichDirection;
     public Nodes BreakableWall;
 
     private void Awake()
